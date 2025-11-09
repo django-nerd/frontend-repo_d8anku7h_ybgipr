@@ -1,28 +1,35 @@
-import { useState } from 'react'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import TechStack from './components/TechStack';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white dark:bg-neutral-950 selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300">
+      <Navbar />
+      <main className="pt-20">
+        <Hero />
+        <ParallaxDivider />
+        <About />
+        <TechStack />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+function ParallaxDivider() {
+  return (
+    <div className="relative h-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-100/70 to-transparent dark:via-neutral-900/60" />
+      <div className="absolute inset-0" aria-hidden>
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[140%] h-[140%] rounded-full bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 blur-3xl will-change-transform" style={{ transform: 'translate3d(0, -10%, 0)' }} />
+      </div>
+    </div>
+  );
+}
